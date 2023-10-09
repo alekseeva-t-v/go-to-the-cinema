@@ -1,9 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html {
-  scroll-behavior: smooth;
+  font-family: var(--font-stack);
+  font-size: 62.5%;
 }
 
 body {
-  background-color: var(--page-bg);
-  color: var(--text-color);
-  font-family: var(--font-main);
+  background-image: url('../img/background.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: top center;
 }

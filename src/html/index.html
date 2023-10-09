@@ -5,12 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Идем в кино</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&amp;subset=cyrillic,cyrillic-ext,latin-ext"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./css/main.css" />
   </head>
   <body>
-    @@include('blocks/header.html')
-    @@include('blocks/footer.html')
+    @@include('blocks/header.html') @@include('blocks/nav.html')
+    <main class="main">@@include('blocks/main.html')</main>
+
     <script src="./js/index.bundle.js"></script>
   </body>
 </html>
