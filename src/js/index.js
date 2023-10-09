@@ -5,8 +5,6 @@ import {
 } from './modules/create-element';
 import { DOM } from './modules/dom-element';
 
-console.log(DOM.pageNav);
-
 const currentDate = new Date();
 const currentYear = currentDate.getFullYear();
 const currentMonth = currentDate.getMonth();
@@ -135,7 +133,7 @@ async function fetchFilms() {
             <span class="movie__data-duration">${film.film_duration} минуты</span>
             <span class="movie__data-origin">${film.film_origin}</span>
           </p>
-          
+          <div class="movie-seances__halls-list"></div>
         </div>
       `;
 
@@ -149,11 +147,15 @@ async function fetchFilms() {
           return seance.seance_hallid === hall.hall_id;
         });
 
+        const movieSeancesHallslist = filmElement.querySelector(
+          '.movie-seances__halls-list'
+        );
+
         if (seancesFilmInHallArr.length > 0) {
           const movieSeancesHall = createElement(
             'div',
             'movie-seances__hall',
-            filmElement
+            movieSeancesHallslist
           );
           movieSeancesHall.innerHTML = `<h3 class="movie-seances__hall-title" data-id=${
             hall.hall_id
@@ -187,11 +189,77 @@ async function fetchFilms() {
             );
 
             movieSeancesTimeButton.disabled =
-              currentDate.getTime() > seanceTime.getTime() ? true : false;
-            movieSeancesTimeButton.innerHTML = `<a class="movie-seances__time" href="hall.html" data-seance-start=${seance.seance_start} data-seance-id=${seance.seance_id} disabled>${seance.seance_time}</a>`;
+              currentDate.getTime() > seanceTime.getTime() &&
+              Number(selectedDay) === currentDay
+                ? true
+                : false;
+
+            movieSeancesTimeButton.innerHTML = `<a class="movie-seances__time" href="hall.html" data-seance-start=${seance.seance_start} data-seance-id=${seance.seance_id}>${seance.seance_time}</a>`;
           });
         }
       }
+    });
+
+    const movieSeancesLinksList = Array.from(
+      document.querySelectorAll('.movie-seances__time')
+    );
+
+    movieSeancesLinksList.forEach((movieSeancesLink) => {
+      movieSeancesLink.addEventListener('click', (event) => {
+        event.preventDefault()
+        const movie = event.target.closest('.movie');
+        const movieTitle = movie.querySelector('.movie__title');
+        const hall = event.target.closest('.movie-seances__hall');
+        const hallTitle = hall.querySelector('.movie-seances__hall-title');
+
+        const seanceStartHours = Math.trunc(
+          Number(event.target.dataset.seanceStart) / 60
+        );
+        const seanceStartMinutes =
+          Number(event.target.dataset.seanceStart) % 60;
+        const seanceStartDate = new Date(
+          selectedYear,
+          selectedMonth,
+          selectedDay,
+          seanceStartHours,
+          seanceStartMinutes
+        );
+
+        let hallConfig = '';
+        let priceStandart = '';
+        let priceVip = '';
+
+        hallsArr.forEach((hall) => {
+          if (hall.hall_id === hallTitle.dataset.id) {
+            hallConfig = hall.hall_config;
+            priceStandart = hall.hall_price_standart;
+            priceVip = hall.hall_price_vip;
+          }
+        });
+
+        infoAboutSelectedMovie.movieName = movieTitle.textContent.trim();
+        infoAboutSelectedMovie.hallName = hallTitle.textContent.trim();
+        infoAboutSelectedMovie.hallId = hallTitle.dataset.id;
+        infoAboutSelectedMovie.hallConfig = hallConfig;
+        infoAboutSelectedMovie.priceStandart = priceStandart;
+        infoAboutSelectedMovie.priceVip = priceVip;
+        infoAboutSelectedMovie.seanceId = event.target.dataset.seanceId;
+        infoAboutSelectedMovie.seanceTime = event.target.textContent.trim();
+        infoAboutSelectedMovie.seanceStart = String(
+          seanceStartDate.getTime() / 1000
+        );
+        infoAboutSelectedMovie.seanceDay = seanceStartDate.toLocaleString(
+          'ru-Ru',
+          {
+            dateStyle: 'short',
+          }
+        );
+
+        localStorage.setItem(
+          'selectedMovie',
+          JSON.stringify(infoAboutSelectedMovie)
+        );
+      });
     });
   });
 }
