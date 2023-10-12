@@ -10,6 +10,17 @@
   font-size: 1.7rem;
   background-color: var(--accent);
   color: var(--white);
+  cursor: pointer;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  &:disabled {
+    background-color: var(--disabled);
+    pointer-events: none;
+  }
 }
 
 .buying {
@@ -100,6 +111,7 @@
   border: 1px solid #525252;
   box-sizing: border-box;
   border-radius: 4px;
+  cursor: pointer;
 
   &:not(:first-of-type) {
     margin-left: 4px;

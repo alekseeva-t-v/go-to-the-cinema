@@ -5,6 +5,10 @@ import {
 } from './modules/create-element';
 import { DOM } from './modules/dom-element';
 
+document.addEventListener('DOMContentLoaded', () => {
+  localStorage.removeItem('selectedMovie');
+});
+
 const currentDate = new Date();
 const currentYear = currentDate.getFullYear();
 const currentMonth = currentDate.getMonth();
@@ -105,6 +109,7 @@ async function fetchFilms() {
   });
 
   const data = await response.json();
+  console.log(data)
   const filmsArr = data.films.result;
   const seancesArr = data.seances.result;
   const hallsArr = data.halls.result;
@@ -206,7 +211,6 @@ async function fetchFilms() {
 
     movieSeancesLinksList.forEach((movieSeancesLink) => {
       movieSeancesLink.addEventListener('click', (event) => {
-        event.preventDefault()
         const movie = event.target.closest('.movie');
         const movieTitle = movie.querySelector('.movie__title');
         const hall = event.target.closest('.movie-seances__hall');
