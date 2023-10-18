@@ -111,7 +111,6 @@
   border: 1px solid #525252;
   box-sizing: border-box;
   border-radius: 4px;
-  cursor: pointer;
 
   &:not(:first-of-type) {
     margin-left: 4px;
@@ -171,6 +170,9 @@
   text-align: center;
   background-color: #171D24;
   padding: 1.5rem 3rem 1.5rem;
+  display: none;
+  opacity: 0;
+  transition: all 0.6s;
 }
 
 .conf-step__wrapper {
@@ -198,6 +200,7 @@
   border: 1px solid #525252;
   box-sizing: border-box;
   border-radius: 4px;
+  cursor: pointer;
 }
 .conf-step__chair:not(:first-of-type) {
   margin-left: 4px;
@@ -205,6 +208,7 @@
 
 .conf-step__chair_disabled {
   opacity: 0;
+  pointer-events: none;
 }
 
 .conf-step__chair_standart {
@@ -217,6 +221,7 @@
 
 .conf-step__chair_taken {
   background-color: transparent;
+  pointer-events: none;
 }
 
 .conf-step__chair_selected {

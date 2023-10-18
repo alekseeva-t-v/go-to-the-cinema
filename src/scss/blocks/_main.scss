@@ -1,6 +1,182 @@
+#main {
+  opacity: 0;
+  transition: all 0.7s;
+}
+
+.main {
+  .movie--skeleton {
+    position: relative;
+    z-index: 1;
+    min-height: 700px;
+    animation: fade 1s linear infinite alternate;
+    background-repeat: no-repeat;
+    background-image:
+      linear-gradient(var(--skeleton) 800px, transparent 0),
+      linear-gradient(var(--skeleton) 40px, transparent 0),
+      linear-gradient(var(--skeleton) 100px, transparent 0),
+      linear-gradient(var(--skeleton) 20px, transparent 0),
+      linear-gradient(var(--skeleton) 50px, transparent 0),
+      linear-gradient(var(--skeleton) 50px, transparent 0);
+    background-size:
+      70% 300px,
+      70% 40px,
+      85% 100px,
+      70% 20px,
+      70% 50px,
+      70% 50px;
+    background-position:
+      40% 0,
+      30px 320px,
+      30px 380px,
+      30px 490px,
+      30px 530px,
+      30px 600px;
+  }
+
+  .conf-step--skeleton {
+    width: 100%;
+    height: 375px;
+    background-color: var(--disabled);
+    animation: fade 1s linear infinite alternate;
+    background-repeat: no-repeat;
+    background-image:
+      linear-gradient(var(--skeleton) 300px, transparent 0),
+      linear-gradient(var(--skeleton) 50px, transparent 0);
+    background-size:
+      270px 270px,
+      270px 50px;
+    background-position:
+      50% 15px,
+      50% 310px;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media screen and (min-width: 400px) {
+  .main {
+    .movie--skeleton {
+      min-height: 900px;
+      background-image:
+        linear-gradient(var(--skeleton) 800px, transparent 0),
+        linear-gradient(var(--skeleton) 40px, transparent 0),
+        linear-gradient(var(--skeleton) 100px, transparent 0),
+        linear-gradient(var(--skeleton) 20px, transparent 0),
+        linear-gradient(var(--skeleton) 50px, transparent 0),
+        linear-gradient(var(--skeleton) 50px, transparent 0);
+      background-size:
+        70% 500px,
+        70% 40px,
+        85% 100px,
+        70% 20px,
+        70% 50px,
+        70% 50px;
+      background-position:
+        40% 0,
+        30px 520px,
+        30px 580px,
+        30px 690px,
+        30px 730px,
+        30px 800px;
+    }
+  }
+}
+
+@media screen and (min-width: 540px) {
+  .main {
+    .movie--skeleton {
+      min-height: 400px;
+      background-image:
+        linear-gradient(var(--skeleton) 400px, transparent 0),
+        linear-gradient(var(--skeleton) 40px, transparent 0),
+        linear-gradient(var(--skeleton) 100px, transparent 0),
+        linear-gradient(var(--skeleton) 20px, transparent 0),
+        linear-gradient(var(--skeleton) 50px, transparent 0),
+        linear-gradient(var(--skeleton) 50px, transparent 0);
+      background-size:
+        23% 220px,
+        30% 40px,
+        65% 100px,
+        30% 20px,
+        30% 50px,
+        30% 50px;
+      background-position:
+        20px 0,
+        200px 20px,
+        200px 80px,
+        200px 190px,
+        200px 230px,
+        200px 300px;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .main {
+    .movie--skeleton {
+      background-image:
+        linear-gradient(var(--skeleton) 400px, transparent 0),
+        linear-gradient(var(--skeleton) 40px, transparent 0),
+        linear-gradient(var(--skeleton) 100px, transparent 0),
+        linear-gradient(var(--skeleton) 20px, transparent 0),
+        linear-gradient(var(--skeleton) 50px, transparent 0),
+        linear-gradient(var(--skeleton) 50px, transparent 0);
+      background-size:
+        23% 280px,
+        30% 40px,
+        65% 100px,
+        30% 20px,
+        30% 50px,
+        30% 50px;
+      background-position:
+        20px 0,
+        250px 20px,
+        250px 80px,
+        250px 190px,
+        250px 230px,
+        250px 300px;
+    }
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .main {
+    .movie--skeleton {
+      background-image:
+        linear-gradient(var(--skeleton) 400px, transparent 0),
+        linear-gradient(var(--skeleton) 40px, transparent 0),
+        linear-gradient(var(--skeleton) 100px, transparent 0),
+        linear-gradient(var(--skeleton) 20px, transparent 0),
+        linear-gradient(var(--skeleton) 50px, transparent 0),
+        linear-gradient(var(--skeleton) 50px, transparent 0);
+      background-size:
+        23% 320px,
+        30% 40px,
+        65% 100px,
+        30% 20px,
+        30% 50px,
+        30% 50px;
+      background-position:
+        20px 0,
+        260px 20px,
+        260px 80px,
+        260px 190px,
+        260px 230px,
+        260px 300px;
+    }
+  }
+}
+
 @media screen and (min-width: 990px) {
-  main {
+  .main {
     width: 990px;
-    margin: 0 auto 50px;
+    margin: 10px auto;
   }
 }

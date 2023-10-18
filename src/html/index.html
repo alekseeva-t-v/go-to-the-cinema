@@ -12,8 +12,16 @@
     <link rel="stylesheet" href="./css/main.css" />
   </head>
   <body>
-    @@include('blocks/header.html') @@include('blocks/nav.html')
-    <main class="main"></main>
+    @@include('blocks/header.html')
+    @@include('blocks/nav.html')
+    <div class="main main--skeleton">
+      <div class="movie movie--skeleton">
+      </div>
+      <div class="movie movie--skeleton">
+      </div>
+    </div>
+    <main class="main" id="main">
+    </main>
 
     <script src="./js/index.bundle.js"></script>
   </body>
